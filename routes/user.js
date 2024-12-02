@@ -25,6 +25,22 @@ router.post("/login", async (req,res)=>{
     }   
 })
 
+router.get("/admins", async (req,res)=>{
+    try {
+        // Fetch assignments where the logged-in admin is tagged
+        const adminNames = await User.find({ role: "ADMIN" }, "Username email" );
+
+        // Render the new page to show all assignments for this admin
+        res.render("allAdmins", {
+            user: req.user,
+            admins: adminNames
+        });
+    } catch (error) {
+        console.error("Error fetching admin assignments:", error);
+        res.status(500).send("Server Error");
+    }
+})
+
 router.get('/logout',(req,res)=>{
     res.clearCookie('token').redirect("/user/login")
 })

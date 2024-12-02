@@ -28,7 +28,8 @@ const AssignmentSchema = new mongoose.Schema({
     },
   status: 
     { 
-        type: String, enum: ['Pending', 'Accepted', 'Rejected'],
+        type: String, 
+        enum: ['Pending', 'Accepted', 'Rejected'],
         default: 'Pending' 
     },
   

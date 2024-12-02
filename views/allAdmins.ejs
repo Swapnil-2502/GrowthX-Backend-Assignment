@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Admins List</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <div class="container mt-5">
+        <h1>Admins List</h1>
+        <% if (admins.length > 0) { %>
+            <ul class="list-group">
+                <% admins.forEach(admin => { %>
+                    <li class="list-group-item">
+                        <strong>Name:</strong> <%= admin.Username %><br>
+                        <strong>Email:</strong> <%= admin.email %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No admins found.</p>
+        <% } %>
+    </div>
+    <%- include('./partials/scripts') %>
+</body>
+</html>
