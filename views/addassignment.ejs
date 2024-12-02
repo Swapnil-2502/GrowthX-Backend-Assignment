@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Add Assignment</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+        <div class="container mt-5">
+            <form action="/assignment" method="post" >
+                <div class="mb-3">
+                    <label for="Username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="Username" name="Username" placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <label for="body" class="form-label">Task</label>
+                    <textarea class="form-control" id="body" name="body" placeholder="Content of Task" rows="2"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="Adminname" class="form-label">Admin name</label>
+                    <input type="text" class="form-control" id="Adminname" name="Adminname" placeholder="Admin's Name">
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    <%- include('./partials/scripts') %>
+</body>
+</html>

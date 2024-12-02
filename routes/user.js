@@ -14,30 +14,36 @@ router.get("/register", (req,res)=>{
 router.post("/login", async (req,res)=>{
     const {email,password} = req.body
 
-    const user = await User.matchPassword(email,password)
-    console.log("User", user)
-    return res.redirect("/")
+    try{
+        const token = await User.matchPasswordAndGenerateToken(email,password)
+        return res.cookie("token",token).redirect("/");
 
-    // try{
-    //     const token = await User.matchPassword(email,password)
-    //     return res.cookie("token",token).redirect("/");
-    // }
-    // catch{
+    }catch(error){
+        return res.render("login",{
+            error: "Incorrect credentials",
+        })
+    }   
+})
 
-    // }
-   
+router.get('/logout',(req,res)=>{
+    res.clearCookie('token').redirect("/user/login")
 })
 
 router.post("/register", async (req,res)=>{
-    const {Username ,email, password} = req.body;
+    const {Username ,email, password, role} = req.body;
+
+    //console.log(req.body)
+
+    const userRole = role === 'ADMIN' ? 'ADMIN' : 'USER';
 
     await User.create({
         Username,
         email,
-        password
+        password,
+        role: userRole
     })
 
-    return res.redirect("/")
+    return res.redirect("/user/login")
 })
 
 module.exports = router;
