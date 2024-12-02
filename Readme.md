@@ -19,9 +19,13 @@ npm install express nodemon jwtwebtoken cookie-parser
 //Connect to mongoDB using mongoose
 connectMongoDB("mongodb://127.0.0.1:27017/Growthx");
 ```
-
-
-
+- Start your local server
+```bash
+npm run dev
+```
+- Now you are good to go.Paste this url in your browser "http://localhost:8000/user/login".
+I have added /user and /assignment for better understanding but it can be removed if you want it to be.
+  
 #### Technologies Used
 
 -   ##### Frontend: HTML, CSS, JavaScript
