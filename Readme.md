@@ -15,7 +15,6 @@ OR
 npm install express nodemon jwtwebtoken cookie-parser
 ```
 - Make a Database at your local MongoDB Compass give a Database Name and Cluster Name as users. Replace '/Growthx' with the name of your Database and you will be connected to MongoDB.
-- 
 ```bash
 //Connect to mongoDB using mongoose
 connectMongoDB("mongodb://127.0.0.1:27017/Growthx");
