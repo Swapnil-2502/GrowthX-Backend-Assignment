@@ -7,7 +7,7 @@ const User = require('../models/user')
 
 
 
-router.get("/add-assignment", (req,res)=>{
+router.get("/upload", (req,res)=>{
     return res.render("addassignment",{
         user: req.user
     })
