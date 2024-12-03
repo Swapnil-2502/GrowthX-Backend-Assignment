@@ -1,11 +1,11 @@
 require('dotenv').config()
 const path = require('path');
 const express = require('express');
-const {connectMongoDB} = require("../connection")
+const {connectMongoDB} = require("./connection")
 const cookieParser = require('cookie-parser')
-const { checkForAuthenticationCookie } = require("../middlewares/authentication");
+const { checkForAuthenticationCookie } = require("./middlewares/authentication");
 
-const serverless = require('serverless-http');
+//const serverless = require('serverless-http');
 
 connectMongoDB(process.env.MONGO_URL)
 
@@ -20,10 +20,10 @@ app.use(checkForAuthenticationCookie("token"))
 app.set('view engine','ejs')
 app.set("views", path.resolve("./views"));
 
-const Assignment = require("../models/assignment");
+const Assignment = require("./models/assignment");
 
-const userRoute = require('../routes/user')
-const assignmentRoute = require('../routes/assignment')
+const userRoute = require('./routes/user')
+const assignmentRoute = require('./routes/assignment')
 
 app.get("/", async (req, res) => {
     try {
@@ -55,4 +55,4 @@ app.listen(PORT, ()=>{
     console.log(`Server is running on Port ${PORT}`)
 })
 
-module.exports = serverless(app);
+//module.exports = serverless(app);
