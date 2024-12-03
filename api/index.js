@@ -5,6 +5,8 @@ const {connectMongoDB} = require("./connection")
 const cookieParser = require('cookie-parser')
 const { checkForAuthenticationCookie } = require("./middlewares/authentication");
 
+const serverless = require('serverless-http');
+
 connectMongoDB(process.env.MONGO_URL)
 
 const app = express();
@@ -49,6 +51,8 @@ app.get("/", async (req, res) => {
 app.use('/user',userRoute)
 app.use('/assignment',assignmentRoute)
 
-app.listen(PORT, ()=>{
-    console.log(`Server is running on Port ${PORT}`)
-})
+// app.listen(PORT, ()=>{
+//     console.log(`Server is running on Port ${PORT}`)
+// })
+
+module.exports = serverless(app);
