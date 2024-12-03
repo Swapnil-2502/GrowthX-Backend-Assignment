@@ -1,14 +1,14 @@
+require('dotenv').config()
 const path = require('path');
 const express = require('express');
 const {connectMongoDB} = require("./connection")
 const cookieParser = require('cookie-parser')
 const { checkForAuthenticationCookie } = require("./middlewares/authentication");
 
-connectMongoDB('mongodb://127.0.0.1:27017/Growthx')
-
+connectMongoDB(process.env.MONGO_URL)
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 //middlewares
 app.use(express.urlencoded({extended: false})) // Middleware to handle form data
