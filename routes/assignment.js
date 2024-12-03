@@ -44,7 +44,10 @@ router.post("/", async (req,res)=>{
         const admin = await User.findOne({Username: Adminname});
 
         if(!user || !admin){
-            return res.status(400).send("Invalid user or admin names");
+            return res.status(400).render("addassignment",{
+                error: "Incorrect User name or Admin name",
+                user: req.user
+            });
         }
 
         const newAssignment = await Assignment.create({

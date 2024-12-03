@@ -6,6 +6,14 @@
 </head>
 <body>
     <%- include('./partials/nav') %>
+    <% if (locals.error) { %>
+        <div class="container mt-5"> 
+          <div class="alert alert-danger" role="alert">
+            <%= locals.error  %>
+          </div>
+        </div>
+        
+      <% } %>
         <div class="container mt-5">
             <form action="/assignment" method="post" >
                 <div class="mb-3">
