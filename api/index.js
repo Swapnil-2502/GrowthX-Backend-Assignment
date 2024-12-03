@@ -51,8 +51,8 @@ app.get("/", async (req, res) => {
 app.use('/user',userRoute)
 app.use('/assignment',assignmentRoute)
 
-// app.listen(PORT, ()=>{
-//     console.log(`Server is running on Port ${PORT}`)
-// })
+app.listen(PORT, ()=>{
+    console.log(`Server is running on Port ${PORT}`)
+})
 
 module.exports = serverless(app);
